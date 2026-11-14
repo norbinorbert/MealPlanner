@@ -1,5 +1,8 @@
 import 'package:material_ui/material_ui.dart';
 
+import '../../../core/colors.dart';
+import '../../../core/dimensions.dart';
+import '../../../core/typography.dart';
 import '../models/recipe.dart';
 
 class RecipeDetailsScreen extends StatelessWidget {
@@ -10,7 +13,7 @@ class RecipeDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: AppColors.surface,
       body: SafeArea(
         top: false,
         child: LayoutBuilder(
@@ -22,13 +25,17 @@ class RecipeDetailsScreen extends StatelessWidget {
                   top: 0,
                   left: 0,
                   right: 0,
-                  height: constraints.maxHeight * 0.48,
+                  height:
+                      constraints.maxHeight *
+                      AppDimensions.recipeArtworkHeightFactor,
                   child: _RecipeArtwork(recipe: recipe),
                 ),
                 Positioned(
-                  top: MediaQuery.paddingOf(context).top + 8,
-                  left: 12,
-                  right: 12,
+                  top:
+                      MediaQuery.paddingOf(context).top +
+                      AppDimensions.spacing8,
+                  left: AppDimensions.spacing12,
+                  right: AppDimensions.spacing12,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -46,7 +53,9 @@ class RecipeDetailsScreen extends StatelessWidget {
                   ),
                 ),
                 Positioned(
-                  top: constraints.maxHeight * 0.39,
+                  top:
+                      constraints.maxHeight *
+                      AppDimensions.recipeSheetTopFactor,
                   left: 0,
                   right: 0,
                   bottom: 0,
@@ -85,8 +94,8 @@ class _RecipeArtwork extends StatelessWidget {
             Center(
               child: Icon(
                 recipe.placeholderIcon,
-                size: 220,
-                color: Colors.white.withValues(alpha: 0.8),
+                size: AppDimensions.recipeArtworkIconSize,
+                color: AppColors.surfaceOverlayStrong,
               ),
             ),
           const DecoratedBox(
@@ -94,7 +103,7 @@ class _RecipeArtwork extends StatelessWidget {
               gradient: LinearGradient(
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
-                colors: [Color(0x1A000000), Colors.transparent],
+                colors: [AppColors.contentOverlaySubtle, Colors.transparent],
                 stops: [0, 0.3],
               ),
             ),
@@ -121,10 +130,12 @@ class _HeroIconButton extends StatelessWidget {
     return IconButton(
       onPressed: onPressed,
       tooltip: tooltip,
-      icon: Icon(icon, size: 28, color: Colors.black),
-      style: IconButton.styleFrom(
-        backgroundColor: Colors.white.withValues(alpha: 0.78),
+      icon: Icon(
+        icon,
+        size: AppDimensions.iconSizeLarge,
+        color: AppColors.content,
       ),
+      style: IconButton.styleFrom(backgroundColor: AppColors.surfaceOverlay),
     );
   }
 }
@@ -139,52 +150,49 @@ class _RecipeDetailsSheet extends StatelessWidget {
     final nutrition = recipe.nutrition;
     return Container(
       decoration: const BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.vertical(top: Radius.circular(28)),
+        color: AppColors.surface,
+        borderRadius: BorderRadius.vertical(
+          top: Radius.circular(AppDimensions.cornerRadiusSheet),
+        ),
       ),
       clipBehavior: Clip.antiAlias,
       child: Column(
         children: [
           SizedBox(
-            height: 86,
+            height: AppDimensions.recipeDetailsHeaderHeight,
             child: Stack(
               alignment: Alignment.center,
               children: [
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
-                      recipe.name,
-                      style: const TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
-                    const SizedBox(height: 4),
+                    Text(recipe.name, style: AppTypography.display),
+                    const SizedBox(height: AppDimensions.spacing4),
                     Text(
                       '${recipe.mealType} / ${recipe.prepTimeMinutes} mins',
-                      style: const TextStyle(
-                        color: Color(0xFF707070),
-                        fontSize: 13,
-                        fontWeight: FontWeight.w500,
+                      style: AppTypography.bodySmallEmphasis.copyWith(
+                        color: AppColors.contentSubtle,
                       ),
                     ),
                   ],
                 ),
                 Positioned(
-                  left: 12,
+                  left: AppDimensions.spacing12,
                   child: IconButton(
                     onPressed: () {},
                     tooltip: 'Reset recipe',
-                    icon: const Icon(Icons.refresh, size: 28),
+                    icon: const Icon(
+                      Icons.refresh,
+                      size: AppDimensions.iconSizeLarge,
+                    ),
                   ),
                 ),
               ],
             ),
           ),
           Container(
-            height: 70,
-            color: const Color(0xFFF4F4F4),
+            height: AppDimensions.nutritionRowHeight,
+            color: AppColors.surfaceTertiary,
             child: Row(
               children: [
                 _NutritionItem(
@@ -204,19 +212,20 @@ class _RecipeDetailsSheet extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.fromLTRB(24, 14, 18, 8),
+            padding: const EdgeInsets.fromLTRB(
+              AppDimensions.spacing24,
+              AppDimensions.spacing14,
+              AppDimensions.spacing18,
+              AppDimensions.spacing8,
+            ),
             child: Row(
               children: [
-                const Text(
-                  'Ingredients',
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
-                ),
-                const SizedBox(width: 10),
+                const Text('Ingredients', style: AppTypography.sectionTitle),
+                const SizedBox(width: AppDimensions.spacing10),
                 Text(
                   '${recipe.servings} serves',
-                  style: const TextStyle(
-                    fontSize: 13,
-                    color: Color(0xFF9A9A9A),
+                  style: AppTypography.bodySmall.copyWith(
+                    color: AppColors.contentMuted,
                   ),
                 ),
                 const Spacer(),
@@ -230,9 +239,15 @@ class _RecipeDetailsSheet extends StatelessWidget {
           ),
           Expanded(
             child: ListView.separated(
-              padding: const EdgeInsets.fromLTRB(24, 0, 20, 8),
+              padding: const EdgeInsets.fromLTRB(
+                AppDimensions.spacing24,
+                0,
+                AppDimensions.spacing20,
+                AppDimensions.spacing8,
+              ),
               itemCount: recipe.ingredients.length,
-              separatorBuilder: (context, index) => const SizedBox(height: 14),
+              separatorBuilder: (context, index) =>
+                  const SizedBox(height: AppDimensions.spacing14),
               itemBuilder: (context, index) {
                 final ingredient = recipe.ingredients[index];
                 return Row(
@@ -240,14 +255,13 @@ class _RecipeDetailsSheet extends StatelessWidget {
                     Expanded(
                       child: Text(
                         ingredient.name,
-                        style: const TextStyle(fontSize: 15),
+                        style: AppTypography.bodyLarge,
                       ),
                     ),
                     Text(
                       ingredient.amountLabel,
-                      style: const TextStyle(
-                        color: Color(0xFFAAAAAA),
-                        fontSize: 14,
+                      style: AppTypography.body.copyWith(
+                        color: AppColors.contentFaint,
                       ),
                     ),
                   ],
@@ -256,23 +270,27 @@ class _RecipeDetailsSheet extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.fromLTRB(24, 12, 24, 14),
+            padding: const EdgeInsets.fromLTRB(
+              AppDimensions.spacing24,
+              AppDimensions.spacing12,
+              AppDimensions.spacing24,
+              AppDimensions.spacing14,
+            ),
             child: SizedBox(
               width: double.infinity,
-              height: 52,
+              height: AppDimensions.cookingButtonHeight,
               child: ElevatedButton(
                 onPressed: () {},
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFF8A47EB),
-                  foregroundColor: Colors.white,
+                  backgroundColor: AppColors.accent,
+                  foregroundColor: AppColors.surface,
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(6),
+                    borderRadius: BorderRadius.circular(
+                      AppDimensions.cornerRadiusButton,
+                    ),
                   ),
                 ),
-                child: const Text(
-                  'Start cooking',
-                  style: TextStyle(fontSize: 17, fontWeight: FontWeight.w700),
-                ),
+                child: const Text('Start cooking', style: AppTypography.button),
               ),
             ),
           ),
@@ -294,12 +312,9 @@ class _NutritionItem extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text(value, style: const TextStyle(fontSize: 13)),
-          const SizedBox(height: 3),
-          Text(
-            label,
-            style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
-          ),
+          Text(value, style: AppTypography.bodySmall),
+          const SizedBox(height: AppDimensions.spacing3),
+          Text(label, style: AppTypography.bodyEmphasis),
         ],
       ),
     );
@@ -315,24 +330,30 @@ class _ServingButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 36,
-      height: 28,
+      width: AppDimensions.servingButtonWidth,
+      height: AppDimensions.servingButtonHeight,
       child: OutlinedButton(
         onPressed: () {},
         style: OutlinedButton.styleFrom(
-          foregroundColor: Colors.black,
+          foregroundColor: AppColors.content,
           padding: EdgeInsets.zero,
-          side: const BorderSide(color: Color(0xFF333333)),
+          side: const BorderSide(color: AppColors.borderStrong),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.horizontal(
               left: icon == Icons.remove
-                  ? const Radius.circular(4)
+                  ? const Radius.circular(AppDimensions.cornerRadiusSmall)
                   : Radius.zero,
-              right: icon == Icons.add ? const Radius.circular(4) : Radius.zero,
+              right: icon == Icons.add
+                  ? const Radius.circular(AppDimensions.cornerRadiusSmall)
+                  : Radius.zero,
             ),
           ),
         ),
-        child: Icon(icon, size: 18, semanticLabel: tooltip),
+        child: Icon(
+          icon,
+          size: AppDimensions.iconSizeSmall,
+          semanticLabel: tooltip,
+        ),
       ),
     );
   }

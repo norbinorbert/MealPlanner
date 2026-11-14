@@ -1,5 +1,6 @@
 import 'package:material_ui/material_ui.dart';
 
+import 'core/colors.dart';
 import 'features/home/home_screen.dart';
 
 void main() {
@@ -15,10 +16,10 @@ class MyApp extends StatelessWidget {
       title: 'Meal Planner',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color(0xFF347FFF),
-          surface: Colors.white,
+          seedColor: AppColors.primary,
+          surface: AppColors.surface,
         ),
-        scaffoldBackgroundColor: Colors.white,
+        scaffoldBackgroundColor: AppColors.surface,
         useMaterial3: true,
       ),
       home: const HomeScreen(),

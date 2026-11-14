@@ -1,5 +1,6 @@
 import 'package:material_ui/material_ui.dart';
 
+import '../../../core/colors.dart';
 import '../models/recipe.dart';
 
 abstract final class RecipeRepository {
@@ -28,9 +29,9 @@ abstract final class RecipeRepository {
         RecipeIngredient(name: 'Large eggs', amount: 2, unit: 'pcs'),
       ],
       placeholderColors: [
-        Color(0xFF4F3423),
-        Color(0xFFB36B2B),
-        Color(0xFFDD9A40),
+        AppColors.recipeRamenDark,
+        AppColors.recipeRamenMid,
+        AppColors.recipeRamenLight,
       ],
       placeholderIcon: Icons.ramen_dining,
     ),
@@ -53,9 +54,9 @@ abstract final class RecipeRepository {
         RecipeIngredient(name: 'Olive oil', amount: 1, unit: 'tbsp'),
       ],
       placeholderColors: [
-        Color(0xFF33483F),
-        Color(0xFF8F573B),
-        Color(0xFFC17A4A),
+        AppColors.recipeSkewerDark,
+        AppColors.recipeSkewerMid,
+        AppColors.recipeSkewerLight,
       ],
       placeholderIcon: Icons.kebab_dining,
     ),
@@ -78,9 +79,9 @@ abstract final class RecipeRepository {
         RecipeIngredient(name: 'Lemon juice', amount: 1, unit: 'tbsp'),
       ],
       placeholderColors: [
-        Color(0xFF344A34),
-        Color(0xFF5C7C45),
-        Color(0xFFB1A34C),
+        AppColors.recipeSaladDark,
+        AppColors.recipeSaladMid,
+        AppColors.recipeSaladLight,
       ],
       placeholderIcon: Icons.eco_outlined,
     ),

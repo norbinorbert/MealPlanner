@@ -1,6 +1,52 @@
 abstract final class AppDimensions {
+  static const double spacing2 = 2;
+  static const double spacing3 = 3;
+  static const double spacing4 = 4;
+  static const double spacing5 = 5;
+  static const double spacing8 = 8;
+  static const double spacing10 = 10;
+  static const double spacing12 = 12;
+  static const double spacing13 = 13;
+  static const double spacing14 = 14;
+  static const double spacing16 = 16;
+  static const double spacing18 = 18;
+  static const double spacing19 = 19;
+  static const double spacing20 = 20;
+  static const double spacing22 = 22;
+  static const double spacing24 = 24;
+  static const double spacing28 = 28;
+
   static const double cornerRadiusSmall = 4;
+  static const double cornerRadiusButton = 6;
   static const double cornerRadius = 8;
+  static const double cornerRadiusMedium = 12;
   static const double cornerRadiusLarge = 16;
+  static const double cornerRadiusPill = 24;
+  static const double cornerRadiusSheet = 28;
   static const double contentPadding = 16;
+
+  static const double toolbarHeight = 94;
+  static const double avatarRadius = 24;
+  static const double avatarRadiusSmall = 18;
+  static const double iconSizeSmall = 18;
+  static const double iconSizeCalorie = 19;
+  static const double iconSizeMedium = 24;
+  static const double iconSizeLarge = 28;
+  static const double iconSizeExtraLarge = 30;
+  static const double iconSizeNavigation = 25;
+  static const double calorieColumnWidth = 80;
+  static const double macroIndicatorSize = 64;
+  static const double macroIndicatorHeight = 68;
+  static const double macroIndicatorStrokeWidth = 8;
+  static const double recipeCardHeight = 184;
+  static const double recipeCardIconSize = 104;
+  static const double recipeArtworkIconSize = 220;
+  static const double recipeDetailsHeaderHeight = 86;
+  static const double nutritionRowHeight = 70;
+  static const double cookingButtonHeight = 52;
+  static const double servingButtonWidth = 36;
+  static const double servingButtonHeight = 28;
+  static const double progressButtonHeight = 32;
+  static const double recipeArtworkHeightFactor = 0.48;
+  static const double recipeSheetTopFactor = 0.39;
 }

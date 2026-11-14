@@ -1,5 +1,8 @@
 import 'package:material_ui/material_ui.dart';
 
+import '../../core/colors.dart';
+import '../../core/dimensions.dart';
+import '../../core/typography.dart';
 import '../recipes/data/recipe_repository.dart';
 import '../recipes/models/recipe.dart';
 import '../recipes/presentation/recipe_details_screen.dart';
@@ -15,15 +18,22 @@ class HomeScreen extends StatelessWidget {
           children: [
             const _HomeToolbar(),
             const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16),
+              padding: EdgeInsets.symmetric(
+                horizontal: AppDimensions.contentPadding,
+              ),
               child: _ProgressCard(),
             ),
             Expanded(
               child: ListView.separated(
-                padding: const EdgeInsets.fromLTRB(16, 22, 16, 18),
+                padding: const EdgeInsets.fromLTRB(
+                  AppDimensions.contentPadding,
+                  AppDimensions.spacing22,
+                  AppDimensions.contentPadding,
+                  AppDimensions.spacing18,
+                ),
                 itemCount: RecipeRepository.mockRecipes.length,
                 separatorBuilder: (context, index) =>
-                    const SizedBox(height: 18),
+                    const SizedBox(height: AppDimensions.spacing18),
                 itemBuilder: (context, index) =>
                     _RecipeCard(recipe: RecipeRepository.mockRecipes[index]),
               ),
@@ -42,22 +52,31 @@ class _HomeToolbar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 94,
+      height: AppDimensions.toolbarHeight,
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 28),
+        padding: const EdgeInsets.symmetric(
+          horizontal: AppDimensions.spacing28,
+        ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             const CircleAvatar(
-              radius: 24,
-              backgroundColor: Color(0xFFE1E1E1),
-              child: Icon(Icons.person, color: Color(0xFF777777), size: 30),
+              radius: AppDimensions.avatarRadius,
+              backgroundColor: AppColors.surfaceDisabled,
+              child: Icon(
+                Icons.person,
+                color: AppColors.contentTertiary,
+                size: AppDimensions.iconSizeExtraLarge,
+              ),
             ),
             IconButton(
               onPressed: () {},
-              icon: const Icon(Icons.menu, size: 30),
+              icon: const Icon(
+                Icons.menu,
+                size: AppDimensions.iconSizeExtraLarge,
+              ),
               tooltip: 'Menu',
-              color: Colors.black,
+              color: AppColors.content,
             ),
           ],
         ),
@@ -72,91 +91,105 @@ class _ProgressCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.fromLTRB(18, 19, 16, 16),
+      padding: const EdgeInsets.fromLTRB(
+        AppDimensions.spacing18,
+        AppDimensions.spacing19,
+        AppDimensions.contentPadding,
+        AppDimensions.contentPadding,
+      ),
       decoration: BoxDecoration(
-        color: Colors.white,
-        border: Border.all(color: const Color(0xFF222222)),
-        borderRadius: BorderRadius.circular(12),
+        color: AppColors.surface,
+        border: Border.all(color: AppColors.border),
+        borderRadius: BorderRadius.circular(AppDimensions.cornerRadiusMedium),
       ),
       child: Column(
         children: [
           Row(
             children: [
               const Expanded(
-                child: Text(
-                  "Today's Progress",
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
-                ),
+                child: Text("Today's Progress", style: AppTypography.title),
               ),
               TextButton(
                 onPressed: () {},
                 style: TextButton.styleFrom(
-                  foregroundColor: const Color(0xFF2477F3),
+                  foregroundColor: AppColors.actionSecondary,
                   padding: EdgeInsets.zero,
-                  minimumSize: const Size(0, 32),
+                  minimumSize: const Size(
+                    0,
+                    AppDimensions.progressButtonHeight,
+                  ),
                   tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                 ),
                 child: const Text(
                   'View more',
-                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
+                  style: AppTypography.buttonSmall,
                 ),
               ),
             ],
           ),
-          const SizedBox(height: 18),
+          const SizedBox(height: AppDimensions.spacing18),
           const Row(
             children: [
-              SizedBox(width: 80, child: _CaloriesAmount()),
-              SizedBox(width: 4),
+              SizedBox(
+                width: AppDimensions.calorieColumnWidth,
+                child: _CaloriesAmount(),
+              ),
+              SizedBox(width: AppDimensions.spacing4),
               Expanded(
                 child: _MacroProgress(
                   percent: 29,
                   label: 'Fat',
-                  color: Color(0xFFFFC42F),
+                  color: AppColors.macroFat,
                 ),
               ),
-              SizedBox(width: 4),
+              SizedBox(width: AppDimensions.spacing4),
               Expanded(
                 child: _MacroProgress(
                   percent: 65,
                   label: 'Pro',
-                  color: Color(0xFF3485FF),
+                  color: AppColors.macroProtein,
                 ),
               ),
-              SizedBox(width: 4),
+              SizedBox(width: AppDimensions.spacing4),
               Expanded(
                 child: _MacroProgress(
                   percent: 85,
                   label: 'Carb',
-                  color: Color(0xFF7772F7),
+                  color: AppColors.macroCarbohydrate,
                 ),
               ),
             ],
           ),
-          const SizedBox(height: 18),
+          const SizedBox(height: AppDimensions.spacing18),
           Row(
             children: [
               const CircleAvatar(
-                radius: 18,
-                backgroundColor: Color(0xFFE7E7E7),
-                child: Icon(Icons.face_3, size: 24, color: Color(0xFF777777)),
+                radius: AppDimensions.avatarRadiusSmall,
+                backgroundColor: AppColors.surfaceSubtle,
+                child: Icon(
+                  Icons.face_3,
+                  size: AppDimensions.iconSizeMedium,
+                  color: AppColors.contentTertiary,
+                ),
               ),
-              const SizedBox(width: 12),
+              const SizedBox(width: AppDimensions.spacing12),
               Expanded(
                 child: Container(
                   padding: const EdgeInsets.symmetric(
-                    horizontal: 13,
-                    vertical: 10,
+                    horizontal: AppDimensions.spacing13,
+                    vertical: AppDimensions.spacing10,
                   ),
                   decoration: BoxDecoration(
-                    color: const Color(0xFFF3F3F3),
-                    borderRadius: BorderRadius.circular(24),
+                    color: AppColors.surfaceSecondary,
+                    borderRadius: BorderRadius.circular(
+                      AppDimensions.cornerRadiusPill,
+                    ),
                   ),
                   child: const Text(
                     '🎉 Keep the pace! You’re doing great.',
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
-                    style: TextStyle(fontSize: 14),
+                    style: AppTypography.body,
                   ),
                 ),
               ),
@@ -173,26 +206,26 @@ class _CaloriesAmount extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           'Calories',
-          style: TextStyle(fontSize: 14, color: Color(0xFF777777)),
+          style: AppTypography.body.copyWith(color: AppColors.contentTertiary),
         ),
-        SizedBox(height: 5),
+        SizedBox(height: AppDimensions.spacing5),
         Row(
           children: [
-            Icon(Icons.local_fire_department, size: 19),
-            SizedBox(width: 2),
+            Icon(
+              Icons.local_fire_department,
+              size: AppDimensions.iconSizeCalorie,
+            ),
+            SizedBox(width: AppDimensions.spacing2),
             Flexible(
               child: FittedBox(
                 fit: BoxFit.scaleDown,
                 alignment: Alignment.centerLeft,
-                child: Text(
-                  '1,284',
-                  style: TextStyle(fontSize: 22, fontWeight: FontWeight.w700),
-                ),
+                child: Text('1,284', style: AppTypography.metric),
               ),
             ),
           ],
@@ -216,36 +249,31 @@ class _MacroProgress extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 64,
-      height: 68,
+      width: AppDimensions.macroIndicatorSize,
+      height: AppDimensions.macroIndicatorHeight,
       child: Stack(
         alignment: Alignment.center,
         children: [
           SizedBox(
-            width: 64,
-            height: 64,
+            width: AppDimensions.macroIndicatorSize,
+            height: AppDimensions.macroIndicatorSize,
             child: CircularProgressIndicator(
               value: percent / 100,
-              strokeWidth: 8,
+              strokeWidth: AppDimensions.macroIndicatorStrokeWidth,
               strokeCap: StrokeCap.round,
-              backgroundColor: const Color(0xFFF1F1F1),
+              backgroundColor: AppColors.surfaceProgress,
               color: color,
             ),
           ),
           Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Text(
-                '$percent%',
-                style: const TextStyle(
-                  fontSize: 15,
-                  height: 1.1,
-                  fontWeight: FontWeight.w700,
-                ),
-              ),
+              Text('$percent%', style: AppTypography.metricCompact),
               Text(
                 label,
-                style: const TextStyle(fontSize: 11, color: Color(0xFF777777)),
+                style: AppTypography.caption.copyWith(
+                  color: AppColors.contentTertiary,
+                ),
               ),
             ],
           ),
@@ -263,7 +291,7 @@ class _RecipeCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      borderRadius: BorderRadius.circular(12),
+      borderRadius: BorderRadius.circular(AppDimensions.cornerRadiusMedium),
       clipBehavior: Clip.antiAlias,
       child: InkWell(
         onTap: () {
@@ -274,7 +302,7 @@ class _RecipeCard extends StatelessWidget {
           );
         },
         child: Ink(
-          height: 184,
+          height: AppDimensions.recipeCardHeight,
           decoration: BoxDecoration(
             gradient: LinearGradient(
               begin: Alignment.topLeft,
@@ -291,8 +319,8 @@ class _RecipeCard extends StatelessWidget {
                 Center(
                   child: Icon(
                     recipe.placeholderIcon,
-                    size: 104,
-                    color: Colors.white.withValues(alpha: 0.78),
+                    size: AppDimensions.recipeCardIconSize,
+                    color: AppColors.surfaceOverlay,
                   ),
                 ),
               const DecoratedBox(
@@ -300,31 +328,31 @@ class _RecipeCard extends StatelessWidget {
                   gradient: LinearGradient(
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
-                    colors: [Colors.transparent, Color(0xB8000000)],
+                    colors: [Colors.transparent, AppColors.contentOverlay],
                     stops: [0.45, 1],
                   ),
                 ),
               ),
               Positioned(
-                left: 16,
-                right: 16,
-                bottom: 14,
+                left: AppDimensions.contentPadding,
+                right: AppDimensions.contentPadding,
+                bottom: AppDimensions.spacing14,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       recipe.name,
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 18,
-                        fontWeight: FontWeight.w700,
+                      style: AppTypography.title.copyWith(
+                        color: AppColors.surface,
                       ),
                     ),
-                    const SizedBox(height: 3),
+                    const SizedBox(height: AppDimensions.spacing3),
                     Text(
                       '${recipe.mealType} · ${recipe.prepTimeMinutes} mins · '
                       '${recipe.nutrition.energyKcal} kcal',
-                      style: const TextStyle(color: Colors.white, fontSize: 13),
+                      style: AppTypography.bodySmall.copyWith(
+                        color: AppColors.surface,
+                      ),
                     ),
                   ],
                 ),
@@ -343,7 +371,12 @@ class _HomeNavigation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(8, 4, 8, 8),
+      padding: const EdgeInsets.fromLTRB(
+        AppDimensions.spacing8,
+        AppDimensions.spacing4,
+        AppDimensions.spacing8,
+        AppDimensions.spacing8,
+      ),
       child: Row(
         children: const [
           _NavigationItem(icon: Icons.wb_sunny_outlined, label: 'Today'),
@@ -371,21 +404,19 @@ class _NavigationItem extends StatelessWidget {
       child: InkWell(
         onTap: () {},
         child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 8),
+          padding: const EdgeInsets.symmetric(vertical: AppDimensions.spacing8),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Icon(icon, size: 25, color: Colors.black),
-              const SizedBox(height: 8),
+              Icon(
+                icon,
+                size: AppDimensions.iconSizeNavigation,
+                color: AppColors.content,
+              ),
+              const SizedBox(height: AppDimensions.spacing8),
               FittedBox(
                 fit: BoxFit.scaleDown,
-                child: Text(
-                  label,
-                  style: const TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
+                child: Text(label, style: AppTypography.navigation),
               ),
             ],
           ),
