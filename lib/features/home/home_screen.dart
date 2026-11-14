@@ -1,28 +1,11 @@
 import 'package:material_ui/material_ui.dart';
 
+import '../recipes/data/recipe_repository.dart';
+import '../recipes/models/recipe.dart';
+import '../recipes/presentation/recipe_details_screen.dart';
+
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
-
-  static const _recipes = <_Recipe>[
-    _Recipe(
-      title: 'Sesame chicken bowl',
-      subtitle: 'A balanced favorite · 520 kcal',
-      colors: [Color(0xFF4F3423), Color(0xFFB36B2B), Color(0xFFDD9A40)],
-      icon: Icons.ramen_dining,
-    ),
-    _Recipe(
-      title: 'Roasted pepper skewers',
-      subtitle: 'Fresh and colorful · 430 kcal',
-      colors: [Color(0xFF33483F), Color(0xFF8F573B), Color(0xFFC17A4A)],
-      icon: Icons.kebab_dining,
-    ),
-    _Recipe(
-      title: 'Green garden salad',
-      subtitle: 'Light lunch · 360 kcal',
-      colors: [Color(0xFF344A34), Color(0xFF5C7C45), Color(0xFFB1A34C)],
-      icon: Icons.eco_outlined,
-    ),
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -38,11 +21,11 @@ class HomeScreen extends StatelessWidget {
             Expanded(
               child: ListView.separated(
                 padding: const EdgeInsets.fromLTRB(16, 22, 16, 18),
-                itemCount: _recipes.length,
+                itemCount: RecipeRepository.mockRecipes.length,
                 separatorBuilder: (context, index) =>
                     const SizedBox(height: 18),
                 itemBuilder: (context, index) =>
-                    _RecipeCard(recipe: _recipes[index]),
+                    _RecipeCard(recipe: RecipeRepository.mockRecipes[index]),
               ),
             ),
             const _HomeNavigation(),
@@ -272,24 +255,10 @@ class _MacroProgress extends StatelessWidget {
   }
 }
 
-class _Recipe {
-  const _Recipe({
-    required this.title,
-    required this.subtitle,
-    required this.colors,
-    required this.icon,
-  });
-
-  final String title;
-  final String subtitle;
-  final List<Color> colors;
-  final IconData icon;
-}
-
 class _RecipeCard extends StatelessWidget {
   const _RecipeCard({required this.recipe});
 
-  final _Recipe recipe;
+  final Recipe recipe;
 
   @override
   Widget build(BuildContext context) {
@@ -297,26 +266,35 @@ class _RecipeCard extends StatelessWidget {
       borderRadius: BorderRadius.circular(12),
       clipBehavior: Clip.antiAlias,
       child: InkWell(
-        onTap: () {},
+        onTap: () {
+          Navigator.of(context).push(
+            MaterialPageRoute<void>(
+              builder: (context) => RecipeDetailsScreen(recipe: recipe),
+            ),
+          );
+        },
         child: Ink(
           height: 184,
           decoration: BoxDecoration(
             gradient: LinearGradient(
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
-              colors: recipe.colors,
+              colors: recipe.placeholderColors,
             ),
           ),
           child: Stack(
             fit: StackFit.expand,
             children: [
-              Center(
-                child: Icon(
-                  recipe.icon,
-                  size: 104,
-                  color: Colors.white.withValues(alpha: 0.78),
+              if (recipe.imageAssetPath case final imageAssetPath?)
+                Image.asset(imageAssetPath, fit: BoxFit.cover)
+              else
+                Center(
+                  child: Icon(
+                    recipe.placeholderIcon,
+                    size: 104,
+                    color: Colors.white.withValues(alpha: 0.78),
+                  ),
                 ),
-              ),
               const DecoratedBox(
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
@@ -335,7 +313,7 @@ class _RecipeCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      recipe.title,
+                      recipe.name,
                       style: const TextStyle(
                         color: Colors.white,
                         fontSize: 18,
@@ -344,7 +322,8 @@ class _RecipeCard extends StatelessWidget {
                     ),
                     const SizedBox(height: 3),
                     Text(
-                      recipe.subtitle,
+                      '${recipe.mealType} · ${recipe.prepTimeMinutes} mins · '
+                      '${recipe.nutrition.energyKcal} kcal',
                       style: const TextStyle(color: Colors.white, fontSize: 13),
                     ),
                   ],
