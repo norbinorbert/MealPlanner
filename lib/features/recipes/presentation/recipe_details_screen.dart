@@ -136,7 +136,7 @@ class _RecipeDetailsSheet extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   spacing: AppDimensions.itemSpacingSmall,
                   children: [
-                    Text(recipe.name, style: AppTypography.display),
+                    Text(recipe.name, style: AppTypography.title),
                     Text(
                       '${recipe.mealType} / ${recipe.prepTimeMinutes} mins',
                       style: AppTypography.bodySmallEmphasis.copyWith(
@@ -192,10 +192,7 @@ class _RecipeDetailsSheet extends StatelessWidget {
                 Row(
                   spacing: AppDimensions.itemSpacing,
                   children: [
-                    const Text(
-                      'Ingredients',
-                      style: AppTypography.sectionTitle,
-                    ),
+                    const Text('Ingredients', style: AppTypography.emphasis),
                     Text(
                       '${recipe.servings} serves',
                       style: AppTypography.bodySmall.copyWith(
@@ -266,7 +263,10 @@ class _RecipeDetailsSheet extends StatelessWidget {
                     ),
                   ),
                 ),
-                child: const Text('Start cooking', style: AppTypography.button),
+                child: const Text(
+                  'Start cooking',
+                  style: AppTypography.emphasis,
+                ),
               ),
             ),
           ),
@@ -290,7 +290,7 @@ class _NutritionItem extends StatelessWidget {
         spacing: AppDimensions.itemSpacingSmall,
         children: [
           Text(value, style: AppTypography.bodySmall),
-          Text(label, style: AppTypography.bodyEmphasis),
+          Text(label, style: AppTypography.emphasis),
         ],
       ),
     );

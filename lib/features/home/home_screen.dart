@@ -121,10 +121,7 @@ class _ProgressCard extends StatelessWidget {
                   ),
                   tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                 ),
-                child: const Text(
-                  'View more',
-                  style: AppTypography.buttonSmall,
-                ),
+                child: const Text('View more', style: AppTypography.emphasis),
               ),
             ],
           ),
@@ -222,7 +219,7 @@ class _CaloriesAmount extends StatelessWidget {
               child: FittedBox(
                 fit: BoxFit.scaleDown,
                 alignment: Alignment.centerLeft,
-                child: Text('1,284', style: AppTypography.metric),
+                child: Text('1,284', style: AppTypography.title),
               ),
             ),
           ],
@@ -265,7 +262,7 @@ class _MacroProgress extends StatelessWidget {
           Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Text('$percent%', style: AppTypography.metricCompact),
+              Text('$percent%', style: AppTypography.emphasis),
               Text(
                 label,
                 style: AppTypography.caption.copyWith(
@@ -384,7 +381,7 @@ class _NavigationItem extends StatelessWidget {
               ),
               FittedBox(
                 fit: BoxFit.scaleDown,
-                child: Text(label, style: AppTypography.navigation),
+                child: Text(label, style: AppTypography.body),
               ),
             ],
           ),
