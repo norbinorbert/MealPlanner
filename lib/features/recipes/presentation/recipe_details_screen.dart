@@ -77,28 +77,9 @@ class _RecipeArtwork extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return DecoratedBox(
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: recipe.placeholderColors,
-        ),
-      ),
-      child: Stack(
-        fit: StackFit.expand,
-        children: [
-          if (recipe.imageAssetPath case final imageAssetPath?)
-            Image.asset(imageAssetPath, fit: BoxFit.cover)
-          else
-            Center(
-              child: Icon(
-                recipe.placeholderIcon,
-                size: AppDimensions.recipeArtworkIconSize,
-              ),
-            ),
-        ],
-      ),
+    return Stack(
+      fit: StackFit.expand,
+      children: [Image.asset(recipe.imageAssetPath, fit: BoxFit.cover)],
     );
   }
 }

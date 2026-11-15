@@ -12,14 +12,4 @@ abstract final class AppColors {
   static const Color chartYellow = Color(0xFFFEC635);
   static const Color chartBlue = Color(0xFF3585FE);
   static const Color chartPurple = Color(0xFF7876F5);
-
-  static const Color recipeRamenDark = Color(0xFF4F3423);
-  static const Color recipeRamenMid = Color(0xFFB36B2B);
-  static const Color recipeRamenLight = Color(0xFFDD9A40);
-  static const Color recipeSkewerDark = Color(0xFF33483F);
-  static const Color recipeSkewerMid = Color(0xFF8F573B);
-  static const Color recipeSkewerLight = Color(0xFFC17A4A);
-  static const Color recipeSaladDark = Color(0xFF344A34);
-  static const Color recipeSaladMid = Color(0xFF5C7C45);
-  static const Color recipeSaladLight = Color(0xFFB1A34C);
 }

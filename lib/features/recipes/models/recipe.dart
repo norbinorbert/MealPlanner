@@ -1,5 +1,3 @@
-import 'package:material_ui/material_ui.dart';
-
 class Recipe {
   const Recipe({
     required this.id,
@@ -9,9 +7,7 @@ class Recipe {
     required this.servings,
     required this.nutrition,
     required this.ingredients,
-    required this.placeholderColors,
-    required this.placeholderIcon,
-    this.imageAssetPath,
+    required this.imageAssetPath,
   });
 
   final String id;
@@ -21,9 +17,7 @@ class Recipe {
   final int servings;
   final RecipeNutrition nutrition;
   final List<RecipeIngredient> ingredients;
-  final String? imageAssetPath;
-  final List<Color> placeholderColors;
-  final IconData placeholderIcon;
+  final String imageAssetPath;
 }
 
 class RecipeNutrition {

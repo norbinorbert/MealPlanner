@@ -303,25 +303,10 @@ class _RecipeCard extends StatelessWidget {
         },
         child: Ink(
           height: AppDimensions.recipeCardHeight,
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-              colors: recipe.placeholderColors,
-            ),
-          ),
           child: Stack(
             fit: StackFit.expand,
             children: [
-              if (recipe.imageAssetPath case final imageAssetPath?)
-                Image.asset(imageAssetPath, fit: BoxFit.cover)
-              else
-                Center(
-                  child: Icon(
-                    recipe.placeholderIcon,
-                    size: AppDimensions.recipeCardIconSize,
-                  ),
-                ),
+              Image.asset(recipe.imageAssetPath, fit: BoxFit.cover),
               Positioned(
                 left: AppDimensions.contentPadding,
                 right: AppDimensions.contentPadding,

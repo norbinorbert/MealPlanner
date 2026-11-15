@@ -1,6 +1,3 @@
-import 'package:material_ui/material_ui.dart';
-
-import '../../../core/colors.dart';
 import '../models/recipe.dart';
 
 abstract final class RecipeRepository {
@@ -11,6 +8,7 @@ abstract final class RecipeRepository {
       mealType: 'Lunch',
       prepTimeMinutes: 15,
       servings: 2,
+      imageAssetPath: 'assets/images/recipe4.jpg',
       nutrition: RecipeNutrition(
         energyKcal: 520,
         proteinGrams: 15,
@@ -28,12 +26,6 @@ abstract final class RecipeRepository {
         RecipeIngredient(name: 'Fresh ginger', amount: 2, unit: 'tsp'),
         RecipeIngredient(name: 'Large eggs', amount: 2, unit: 'pcs'),
       ],
-      placeholderColors: [
-        AppColors.recipeRamenDark,
-        AppColors.recipeRamenMid,
-        AppColors.recipeRamenLight,
-      ],
-      placeholderIcon: Icons.ramen_dining,
     ),
     Recipe(
       id: 'pepper-skewers',
@@ -41,6 +33,7 @@ abstract final class RecipeRepository {
       mealType: 'Dinner',
       prepTimeMinutes: 25,
       servings: 2,
+      imageAssetPath: 'assets/images/recipe2.jpg',
       nutrition: RecipeNutrition(
         energyKcal: 430,
         proteinGrams: 28,
@@ -53,12 +46,6 @@ abstract final class RecipeRepository {
         RecipeIngredient(name: 'Cherry tomatoes', amount: 120, unit: 'g'),
         RecipeIngredient(name: 'Olive oil', amount: 1, unit: 'tbsp'),
       ],
-      placeholderColors: [
-        AppColors.recipeSkewerDark,
-        AppColors.recipeSkewerMid,
-        AppColors.recipeSkewerLight,
-      ],
-      placeholderIcon: Icons.kebab_dining,
     ),
     Recipe(
       id: 'garden-salad',
@@ -66,6 +53,7 @@ abstract final class RecipeRepository {
       mealType: 'Lunch',
       prepTimeMinutes: 10,
       servings: 1,
+      imageAssetPath: 'assets/images/recipe3.jpg',
       nutrition: RecipeNutrition(
         energyKcal: 360,
         proteinGrams: 12,
@@ -78,12 +66,6 @@ abstract final class RecipeRepository {
         RecipeIngredient(name: 'Cucumber', amount: 0.5, unit: 'pc'),
         RecipeIngredient(name: 'Lemon juice', amount: 1, unit: 'tbsp'),
       ],
-      placeholderColors: [
-        AppColors.recipeSaladDark,
-        AppColors.recipeSaladMid,
-        AppColors.recipeSaladLight,
-      ],
-      placeholderIcon: Icons.eco_outlined,
     ),
   ];
 }
