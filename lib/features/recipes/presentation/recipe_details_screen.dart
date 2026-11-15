@@ -1,8 +1,9 @@
 import 'package:material_ui/material_ui.dart';
 
-import '../../../core/colors.dart';
-import '../../../core/dimensions.dart';
-import '../../../core/typography.dart';
+import '../../../core/components/hero_icon_button.dart';
+import '../../../core/theme/colors.dart';
+import '../../../core/theme/dimensions.dart';
+import '../../../core/theme/typography.dart';
 import '../models/recipe.dart';
 
 class RecipeDetailsScreen extends StatelessWidget {
@@ -39,12 +40,12 @@ class RecipeDetailsScreen extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      _HeroIconButton(
+                      HeroIconButton(
                         icon: Icons.arrow_back,
                         tooltip: 'Back',
                         onPressed: () => Navigator.of(context).maybePop(),
                       ),
-                      _HeroIconButton(
+                      HeroIconButton(
                         icon: Icons.more_horiz,
                         tooltip: 'More options',
                         onPressed: () {},
@@ -80,31 +81,6 @@ class _RecipeArtwork extends StatelessWidget {
     return Stack(
       fit: StackFit.expand,
       children: [Image.asset(recipe.imageAssetPath, fit: BoxFit.cover)],
-    );
-  }
-}
-
-class _HeroIconButton extends StatelessWidget {
-  const _HeroIconButton({
-    required this.icon,
-    required this.tooltip,
-    required this.onPressed,
-  });
-
-  final IconData icon;
-  final String tooltip;
-  final VoidCallback onPressed;
-
-  @override
-  Widget build(BuildContext context) {
-    return IconButton(
-      onPressed: onPressed,
-      tooltip: tooltip,
-      icon: Icon(
-        icon,
-        size: AppDimensions.iconSizeLarge,
-        color: AppColors.content,
-      ),
     );
   }
 }

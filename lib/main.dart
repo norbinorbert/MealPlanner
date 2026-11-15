@@ -1,6 +1,6 @@
 import 'package:material_ui/material_ui.dart';
 
-import 'core/colors.dart';
+import 'core/theme/colors.dart';
 import 'features/home/home_screen.dart';
 
 void main() {
