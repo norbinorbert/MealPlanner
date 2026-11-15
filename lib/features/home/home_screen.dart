@@ -27,13 +27,13 @@ class HomeScreen extends StatelessWidget {
               child: ListView.separated(
                 padding: const EdgeInsets.fromLTRB(
                   AppDimensions.contentPadding,
-                  AppDimensions.itemSpacingLarge,
+                  AppDimensions.contentPaddingLarge,
                   AppDimensions.contentPadding,
-                  AppDimensions.itemSpacing,
+                  AppDimensions.contentPadding,
                 ),
                 itemCount: RecipeRepository.mockRecipes.length,
                 separatorBuilder: (context, index) =>
-                    const SizedBox(height: AppDimensions.itemSpacing),
+                    const SizedBox(height: AppDimensions.itemSpacingLarge),
                 itemBuilder: (context, index) =>
                     _RecipeCard(recipe: RecipeRepository.mockRecipes[index]),
               ),
@@ -55,13 +55,13 @@ class _HomeToolbar extends StatelessWidget {
       height: AppDimensions.toolbarHeight,
       child: Padding(
         padding: const EdgeInsets.symmetric(
-          horizontal: AppDimensions.itemSpacing,
+          horizontal: AppDimensions.contentPadding,
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             const CircleAvatar(
-              radius: AppDimensions.avatarRadius,
+              radius: AppDimensions.iconSizeMedium,
               backgroundColor: AppColors.surfaceSecondary,
               child: Icon(
                 Icons.person,
@@ -92,8 +92,8 @@ class _ProgressCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.fromLTRB(
-        AppDimensions.itemSpacing,
-        AppDimensions.itemSpacingLarge,
+        AppDimensions.contentPadding,
+        AppDimensions.contentPaddingLarge,
         AppDimensions.contentPadding,
         AppDimensions.contentPadding,
       ),
@@ -103,7 +103,7 @@ class _ProgressCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(AppDimensions.cornerRadiusMedium),
       ),
       child: Column(
-        spacing: AppDimensions.itemSpacing,
+        spacing: AppDimensions.itemSpacingLarge,
         children: [
           Row(
             children: [
@@ -129,7 +129,7 @@ class _ProgressCard extends StatelessWidget {
             ],
           ),
           const Row(
-            spacing: AppDimensions.itemSpacingExtraSmall,
+            spacing: AppDimensions.itemSpacingSmall,
             children: [
               SizedBox(
                 width: AppDimensions.calorieColumnWidth,
@@ -162,7 +162,7 @@ class _ProgressCard extends StatelessWidget {
             spacing: AppDimensions.itemSpacingMedium,
             children: [
               const CircleAvatar(
-                radius: AppDimensions.avatarRadiusSmall,
+                radius: AppDimensions.iconSizeSmall,
                 backgroundColor: AppColors.surfaceSecondary,
                 child: Icon(
                   Icons.face_3,
@@ -173,8 +173,8 @@ class _ProgressCard extends StatelessWidget {
               Expanded(
                 child: Container(
                   padding: const EdgeInsets.symmetric(
-                    horizontal: AppDimensions.itemSpacingMedium,
-                    vertical: AppDimensions.itemSpacingSmall,
+                    horizontal: AppDimensions.contentPaddingMedium,
+                    vertical: AppDimensions.contentPaddingSmall,
                   ),
                   decoration: BoxDecoration(
                     color: AppColors.surfaceSecondary,
@@ -205,18 +205,18 @@ class _CaloriesAmount extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      spacing: AppDimensions.itemSpacingExtraSmall,
+      spacing: AppDimensions.itemSpacingSmall,
       children: [
         Text(
           'Calories',
           style: AppTypography.body.copyWith(color: AppColors.contentSecondary),
         ),
         Row(
-          spacing: AppDimensions.itemSpacingExtraSmall,
+          spacing: AppDimensions.itemSpacingSmall,
           children: [
             Icon(
               Icons.local_fire_department,
-              size: AppDimensions.iconSizeCalorie,
+              size: AppDimensions.iconSizeSmall,
             ),
             Flexible(
               child: FittedBox(
@@ -307,10 +307,10 @@ class _RecipeCard extends StatelessWidget {
               Positioned(
                 left: AppDimensions.contentPadding,
                 right: AppDimensions.contentPadding,
-                bottom: AppDimensions.itemSpacing,
+                bottom: AppDimensions.itemSpacingLarge,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  spacing: AppDimensions.itemSpacingExtraSmall,
+                  spacing: AppDimensions.itemSpacingSmall,
                   children: [
                     Text(
                       recipe.name,
@@ -342,12 +342,7 @@ class _HomeNavigation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(
-        AppDimensions.itemSpacingSmall,
-        AppDimensions.itemSpacingExtraSmall,
-        AppDimensions.itemSpacingSmall,
-        AppDimensions.itemSpacingSmall,
-      ),
+      padding: const EdgeInsets.all(AppDimensions.contentPaddingSmall),
       child: Row(
         children: const [
           _NavigationItem(icon: Icons.wb_sunny_outlined, label: 'Today'),
@@ -376,15 +371,15 @@ class _NavigationItem extends StatelessWidget {
         onTap: () {},
         child: Padding(
           padding: const EdgeInsets.symmetric(
-            vertical: AppDimensions.itemSpacingSmall,
+            vertical: AppDimensions.contentPaddingSmall,
           ),
           child: Column(
             mainAxisSize: MainAxisSize.min,
-            spacing: AppDimensions.itemSpacingSmall,
+            spacing: AppDimensions.itemSpacing,
             children: [
               Icon(
                 icon,
-                size: AppDimensions.iconSizeNavigation,
+                size: AppDimensions.iconSizeMedium,
                 color: AppColors.content,
               ),
               FittedBox(
