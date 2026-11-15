@@ -95,19 +95,8 @@ class _RecipeArtwork extends StatelessWidget {
               child: Icon(
                 recipe.placeholderIcon,
                 size: AppDimensions.recipeArtworkIconSize,
-                color: AppColors.surfaceOverlayStrong,
               ),
             ),
-          const DecoratedBox(
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                colors: [AppColors.contentOverlaySubtle, Colors.transparent],
-                stops: [0, 0.3],
-              ),
-            ),
-          ),
         ],
       ),
     );
@@ -135,7 +124,6 @@ class _HeroIconButton extends StatelessWidget {
         size: AppDimensions.iconSizeLarge,
         color: AppColors.content,
       ),
-      style: IconButton.styleFrom(backgroundColor: AppColors.surfaceOverlay),
     );
   }
 }
@@ -171,7 +159,7 @@ class _RecipeDetailsSheet extends StatelessWidget {
                     Text(
                       '${recipe.mealType} / ${recipe.prepTimeMinutes} mins',
                       style: AppTypography.bodySmallEmphasis.copyWith(
-                        color: AppColors.contentSubtle,
+                        color: AppColors.contentSecondary,
                       ),
                     ),
                   ],
@@ -192,7 +180,7 @@ class _RecipeDetailsSheet extends StatelessWidget {
           ),
           Container(
             height: AppDimensions.nutritionRowHeight,
-            color: AppColors.surfaceTertiary,
+            color: AppColors.surfaceSecondary,
             child: Row(
               children: [
                 _NutritionItem(
@@ -225,7 +213,7 @@ class _RecipeDetailsSheet extends StatelessWidget {
                 Text(
                   '${recipe.servings} serves',
                   style: AppTypography.bodySmall.copyWith(
-                    color: AppColors.contentMuted,
+                    color: AppColors.contentSecondary,
                   ),
                 ),
                 const Spacer(),
@@ -261,7 +249,7 @@ class _RecipeDetailsSheet extends StatelessWidget {
                     Text(
                       ingredient.amountLabel,
                       style: AppTypography.body.copyWith(
-                        color: AppColors.contentFaint,
+                        color: AppColors.contentTertiary,
                       ),
                     ),
                   ],
@@ -337,7 +325,7 @@ class _ServingButton extends StatelessWidget {
         style: OutlinedButton.styleFrom(
           foregroundColor: AppColors.content,
           padding: EdgeInsets.zero,
-          side: const BorderSide(color: AppColors.borderStrong),
+          side: const BorderSide(color: AppColors.content),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.horizontal(
               left: icon == Icons.remove

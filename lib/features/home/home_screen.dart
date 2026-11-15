@@ -62,10 +62,10 @@ class _HomeToolbar extends StatelessWidget {
           children: [
             const CircleAvatar(
               radius: AppDimensions.avatarRadius,
-              backgroundColor: AppColors.surfaceDisabled,
+              backgroundColor: AppColors.surfaceSecondary,
               child: Icon(
                 Icons.person,
-                color: AppColors.contentTertiary,
+                color: AppColors.contentSecondary,
                 size: AppDimensions.iconSizeExtraLarge,
               ),
             ),
@@ -99,7 +99,7 @@ class _ProgressCard extends StatelessWidget {
       ),
       decoration: BoxDecoration(
         color: AppColors.surface,
-        border: Border.all(color: AppColors.border),
+        border: Border.all(color: AppColors.content),
         borderRadius: BorderRadius.circular(AppDimensions.cornerRadiusMedium),
       ),
       child: Column(
@@ -112,7 +112,7 @@ class _ProgressCard extends StatelessWidget {
               TextButton(
                 onPressed: () {},
                 style: TextButton.styleFrom(
-                  foregroundColor: AppColors.actionSecondary,
+                  foregroundColor: AppColors.action,
                   padding: EdgeInsets.zero,
                   minimumSize: const Size(
                     0,
@@ -139,7 +139,7 @@ class _ProgressCard extends StatelessWidget {
                 child: _MacroProgress(
                   percent: 29,
                   label: 'Fat',
-                  color: AppColors.macroFat,
+                  color: AppColors.chartYellow,
                 ),
               ),
               SizedBox(width: AppDimensions.spacing4),
@@ -147,7 +147,7 @@ class _ProgressCard extends StatelessWidget {
                 child: _MacroProgress(
                   percent: 65,
                   label: 'Pro',
-                  color: AppColors.macroProtein,
+                  color: AppColors.chartBlue,
                 ),
               ),
               SizedBox(width: AppDimensions.spacing4),
@@ -155,7 +155,7 @@ class _ProgressCard extends StatelessWidget {
                 child: _MacroProgress(
                   percent: 85,
                   label: 'Carb',
-                  color: AppColors.macroCarbohydrate,
+                  color: AppColors.chartPurple,
                 ),
               ),
             ],
@@ -165,11 +165,11 @@ class _ProgressCard extends StatelessWidget {
             children: [
               const CircleAvatar(
                 radius: AppDimensions.avatarRadiusSmall,
-                backgroundColor: AppColors.surfaceSubtle,
+                backgroundColor: AppColors.surfaceSecondary,
                 child: Icon(
                   Icons.face_3,
                   size: AppDimensions.iconSizeMedium,
-                  color: AppColors.contentTertiary,
+                  color: AppColors.contentSecondary,
                 ),
               ),
               const SizedBox(width: AppDimensions.spacing12),
@@ -211,7 +211,7 @@ class _CaloriesAmount extends StatelessWidget {
       children: [
         Text(
           'Calories',
-          style: AppTypography.body.copyWith(color: AppColors.contentTertiary),
+          style: AppTypography.body.copyWith(color: AppColors.contentSecondary),
         ),
         SizedBox(height: AppDimensions.spacing5),
         Row(
@@ -261,7 +261,7 @@ class _MacroProgress extends StatelessWidget {
               value: percent / 100,
               strokeWidth: AppDimensions.macroIndicatorStrokeWidth,
               strokeCap: StrokeCap.round,
-              backgroundColor: AppColors.surfaceProgress,
+              backgroundColor: AppColors.surfaceSecondary,
               color: color,
             ),
           ),
@@ -272,7 +272,7 @@ class _MacroProgress extends StatelessWidget {
               Text(
                 label,
                 style: AppTypography.caption.copyWith(
-                  color: AppColors.contentTertiary,
+                  color: AppColors.contentSecondary,
                 ),
               ),
             ],
@@ -320,19 +320,8 @@ class _RecipeCard extends StatelessWidget {
                   child: Icon(
                     recipe.placeholderIcon,
                     size: AppDimensions.recipeCardIconSize,
-                    color: AppColors.surfaceOverlay,
                   ),
                 ),
-              const DecoratedBox(
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    colors: [Colors.transparent, AppColors.contentOverlay],
-                    stops: [0.45, 1],
-                  ),
-                ),
-              ),
               Positioned(
                 left: AppDimensions.contentPadding,
                 right: AppDimensions.contentPadding,

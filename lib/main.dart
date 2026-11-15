@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       title: 'Meal Planner',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
-          seedColor: AppColors.primary,
+          seedColor: AppColors.accent,
           surface: AppColors.surface,
         ),
         scaffoldBackgroundColor: AppColors.surface,
