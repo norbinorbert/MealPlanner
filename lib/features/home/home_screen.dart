@@ -27,13 +27,13 @@ class HomeScreen extends StatelessWidget {
               child: ListView.separated(
                 padding: const EdgeInsets.fromLTRB(
                   AppDimensions.contentPadding,
-                  AppDimensions.spacing22,
+                  AppDimensions.itemSpacingLarge,
                   AppDimensions.contentPadding,
-                  AppDimensions.spacing18,
+                  AppDimensions.itemSpacing,
                 ),
                 itemCount: RecipeRepository.mockRecipes.length,
                 separatorBuilder: (context, index) =>
-                    const SizedBox(height: AppDimensions.spacing18),
+                    const SizedBox(height: AppDimensions.itemSpacing),
                 itemBuilder: (context, index) =>
                     _RecipeCard(recipe: RecipeRepository.mockRecipes[index]),
               ),
@@ -55,7 +55,7 @@ class _HomeToolbar extends StatelessWidget {
       height: AppDimensions.toolbarHeight,
       child: Padding(
         padding: const EdgeInsets.symmetric(
-          horizontal: AppDimensions.spacing28,
+          horizontal: AppDimensions.itemSpacing,
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -92,8 +92,8 @@ class _ProgressCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.fromLTRB(
-        AppDimensions.spacing18,
-        AppDimensions.spacing19,
+        AppDimensions.itemSpacing,
+        AppDimensions.itemSpacingLarge,
         AppDimensions.contentPadding,
         AppDimensions.contentPadding,
       ),
@@ -127,14 +127,14 @@ class _ProgressCard extends StatelessWidget {
               ),
             ],
           ),
-          const SizedBox(height: AppDimensions.spacing18),
+          const SizedBox(height: AppDimensions.itemSpacing),
           const Row(
             children: [
               SizedBox(
                 width: AppDimensions.calorieColumnWidth,
                 child: _CaloriesAmount(),
               ),
-              SizedBox(width: AppDimensions.spacing4),
+              SizedBox(width: AppDimensions.itemSpacingExtraSmall),
               Expanded(
                 child: _MacroProgress(
                   percent: 29,
@@ -142,7 +142,7 @@ class _ProgressCard extends StatelessWidget {
                   color: AppColors.chartYellow,
                 ),
               ),
-              SizedBox(width: AppDimensions.spacing4),
+              SizedBox(width: AppDimensions.itemSpacingExtraSmall),
               Expanded(
                 child: _MacroProgress(
                   percent: 65,
@@ -150,7 +150,7 @@ class _ProgressCard extends StatelessWidget {
                   color: AppColors.chartBlue,
                 ),
               ),
-              SizedBox(width: AppDimensions.spacing4),
+              SizedBox(width: AppDimensions.itemSpacingExtraSmall),
               Expanded(
                 child: _MacroProgress(
                   percent: 85,
@@ -160,7 +160,7 @@ class _ProgressCard extends StatelessWidget {
               ),
             ],
           ),
-          const SizedBox(height: AppDimensions.spacing18),
+          const SizedBox(height: AppDimensions.itemSpacing),
           Row(
             children: [
               const CircleAvatar(
@@ -172,17 +172,17 @@ class _ProgressCard extends StatelessWidget {
                   color: AppColors.contentSecondary,
                 ),
               ),
-              const SizedBox(width: AppDimensions.spacing12),
+              const SizedBox(width: AppDimensions.itemSpacingMedium),
               Expanded(
                 child: Container(
                   padding: const EdgeInsets.symmetric(
-                    horizontal: AppDimensions.spacing13,
-                    vertical: AppDimensions.spacing10,
+                    horizontal: AppDimensions.itemSpacingMedium,
+                    vertical: AppDimensions.itemSpacingSmall,
                   ),
                   decoration: BoxDecoration(
                     color: AppColors.surfaceSecondary,
                     borderRadius: BorderRadius.circular(
-                      AppDimensions.cornerRadiusPill,
+                      AppDimensions.cornerRadiusMedium,
                     ),
                   ),
                   child: const Text(
@@ -213,14 +213,14 @@ class _CaloriesAmount extends StatelessWidget {
           'Calories',
           style: AppTypography.body.copyWith(color: AppColors.contentSecondary),
         ),
-        SizedBox(height: AppDimensions.spacing5),
+        SizedBox(height: AppDimensions.itemSpacingExtraSmall),
         Row(
           children: [
             Icon(
               Icons.local_fire_department,
               size: AppDimensions.iconSizeCalorie,
             ),
-            SizedBox(width: AppDimensions.spacing2),
+            SizedBox(width: AppDimensions.itemSpacingExtraSmall),
             Flexible(
               child: FittedBox(
                 fit: BoxFit.scaleDown,
@@ -310,7 +310,7 @@ class _RecipeCard extends StatelessWidget {
               Positioned(
                 left: AppDimensions.contentPadding,
                 right: AppDimensions.contentPadding,
-                bottom: AppDimensions.spacing14,
+                bottom: AppDimensions.itemSpacing,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -320,7 +320,7 @@ class _RecipeCard extends StatelessWidget {
                         color: AppColors.surface,
                       ),
                     ),
-                    const SizedBox(height: AppDimensions.spacing3),
+                    const SizedBox(height: AppDimensions.itemSpacingExtraSmall),
                     Text(
                       '${recipe.mealType} · ${recipe.prepTimeMinutes} mins · '
                       '${recipe.nutrition.energyKcal} kcal',
@@ -346,10 +346,10 @@ class _HomeNavigation extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.fromLTRB(
-        AppDimensions.spacing8,
-        AppDimensions.spacing4,
-        AppDimensions.spacing8,
-        AppDimensions.spacing8,
+        AppDimensions.itemSpacingSmall,
+        AppDimensions.itemSpacingExtraSmall,
+        AppDimensions.itemSpacingSmall,
+        AppDimensions.itemSpacingSmall,
       ),
       child: Row(
         children: const [
@@ -378,7 +378,9 @@ class _NavigationItem extends StatelessWidget {
       child: InkWell(
         onTap: () {},
         child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: AppDimensions.spacing8),
+          padding: const EdgeInsets.symmetric(
+            vertical: AppDimensions.itemSpacingSmall,
+          ),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -387,7 +389,7 @@ class _NavigationItem extends StatelessWidget {
                 size: AppDimensions.iconSizeNavigation,
                 color: AppColors.content,
               ),
-              const SizedBox(height: AppDimensions.spacing8),
+              const SizedBox(height: AppDimensions.itemSpacingSmall),
               FittedBox(
                 fit: BoxFit.scaleDown,
                 child: Text(label, style: AppTypography.navigation),

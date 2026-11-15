@@ -33,9 +33,9 @@ class RecipeDetailsScreen extends StatelessWidget {
                 Positioned(
                   top:
                       MediaQuery.paddingOf(context).top +
-                      AppDimensions.spacing8,
-                  left: AppDimensions.spacing12,
-                  right: AppDimensions.spacing12,
+                      AppDimensions.itemSpacingSmall,
+                  left: AppDimensions.itemSpacingMedium,
+                  right: AppDimensions.itemSpacingMedium,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -121,7 +121,7 @@ class _RecipeDetailsSheet extends StatelessWidget {
       decoration: const BoxDecoration(
         color: AppColors.surface,
         borderRadius: BorderRadius.vertical(
-          top: Radius.circular(AppDimensions.cornerRadiusSheet),
+          top: Radius.circular(AppDimensions.cornerRadiusLarge),
         ),
       ),
       clipBehavior: Clip.antiAlias,
@@ -136,7 +136,7 @@ class _RecipeDetailsSheet extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(recipe.name, style: AppTypography.display),
-                    const SizedBox(height: AppDimensions.spacing4),
+                    const SizedBox(height: AppDimensions.itemSpacingExtraSmall),
                     Text(
                       '${recipe.mealType} / ${recipe.prepTimeMinutes} mins',
                       style: AppTypography.bodySmallEmphasis.copyWith(
@@ -146,7 +146,7 @@ class _RecipeDetailsSheet extends StatelessWidget {
                   ],
                 ),
                 Positioned(
-                  left: AppDimensions.spacing12,
+                  left: AppDimensions.itemSpacingMedium,
                   child: IconButton(
                     onPressed: () {},
                     tooltip: 'Reset recipe',
@@ -182,15 +182,15 @@ class _RecipeDetailsSheet extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.fromLTRB(
-              AppDimensions.spacing24,
-              AppDimensions.spacing14,
-              AppDimensions.spacing18,
-              AppDimensions.spacing8,
+              AppDimensions.itemSpacingExtraLarge,
+              AppDimensions.itemSpacing,
+              AppDimensions.itemSpacing,
+              AppDimensions.itemSpacingSmall,
             ),
             child: Row(
               children: [
                 const Text('Ingredients', style: AppTypography.sectionTitle),
-                const SizedBox(width: AppDimensions.spacing10),
+                const SizedBox(width: AppDimensions.itemSpacingSmall),
                 Text(
                   '${recipe.servings} serves',
                   style: AppTypography.bodySmall.copyWith(
@@ -209,14 +209,14 @@ class _RecipeDetailsSheet extends StatelessWidget {
           Expanded(
             child: ListView.separated(
               padding: const EdgeInsets.fromLTRB(
-                AppDimensions.spacing24,
+                AppDimensions.itemSpacingExtraLarge,
                 0,
-                AppDimensions.spacing20,
-                AppDimensions.spacing8,
+                AppDimensions.itemSpacingLarge,
+                AppDimensions.itemSpacingSmall,
               ),
               itemCount: recipe.ingredients.length,
               separatorBuilder: (context, index) =>
-                  const SizedBox(height: AppDimensions.spacing14),
+                  const SizedBox(height: AppDimensions.itemSpacing),
               itemBuilder: (context, index) {
                 final ingredient = recipe.ingredients[index];
                 return Row(
@@ -240,10 +240,10 @@ class _RecipeDetailsSheet extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.fromLTRB(
-              AppDimensions.spacing24,
-              AppDimensions.spacing12,
-              AppDimensions.spacing24,
-              AppDimensions.spacing14,
+              AppDimensions.itemSpacingExtraLarge,
+              AppDimensions.itemSpacingMedium,
+              AppDimensions.itemSpacingExtraLarge,
+              AppDimensions.itemSpacing,
             ),
             child: SizedBox(
               width: double.infinity,
@@ -255,7 +255,7 @@ class _RecipeDetailsSheet extends StatelessWidget {
                   foregroundColor: AppColors.surface,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(
-                      AppDimensions.cornerRadiusButton,
+                      AppDimensions.cornerRadius,
                     ),
                   ),
                 ),
@@ -282,7 +282,7 @@ class _NutritionItem extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(value, style: AppTypography.bodySmall),
-          const SizedBox(height: AppDimensions.spacing3),
+          const SizedBox(height: AppDimensions.itemSpacingExtraSmall),
           Text(label, style: AppTypography.bodyEmphasis),
         ],
       ),

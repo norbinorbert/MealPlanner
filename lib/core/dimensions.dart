@@ -1,32 +1,20 @@
 abstract final class AppDimensions {
-  static const double spacing2 = 2;
-  static const double spacing3 = 3;
-  static const double spacing4 = 4;
-  static const double spacing5 = 5;
-  static const double spacing8 = 8;
-  static const double spacing10 = 10;
-  static const double spacing12 = 12;
-  static const double spacing13 = 13;
-  static const double spacing14 = 14;
-  static const double spacing16 = 16;
-  static const double spacing18 = 18;
-  static const double spacing19 = 19;
-  static const double spacing20 = 20;
-  static const double spacing22 = 22;
-  static const double spacing24 = 24;
-  static const double spacing28 = 28;
+  static const double itemSpacingExtraSmall = 4;
+  static const double itemSpacingSmall = 8;
+  static const double itemSpacingMedium = 12;
+  static const double itemSpacing = 16;
+  static const double itemSpacingLarge = 20;
+  static const double itemSpacingExtraLarge = 24;
 
   static const double cornerRadiusSmall = 4;
-  static const double cornerRadiusButton = 6;
   static const double cornerRadius = 8;
   static const double cornerRadiusMedium = 12;
   static const double cornerRadiusLarge = 16;
-  static const double cornerRadiusPill = 24;
-  static const double cornerRadiusSheet = 28;
+
   static const double contentPadding = 16;
 
-  static const double toolbarHeight = 94;
-  static const double avatarRadius = 24;
+  static const double toolbarHeight = 64;
+  static const double avatarRadius = 22;
   static const double avatarRadiusSmall = 18;
   static const double iconSizeSmall = 18;
   static const double iconSizeCalorie = 19;

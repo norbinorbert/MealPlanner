@@ -10,7 +10,7 @@ abstract final class RecipeRepository {
       servings: 2,
       imageAssetPath: 'assets/images/recipe4.jpg',
       nutrition: RecipeNutrition(
-        energyKcal: 520,
+        energyKcal: 100,
         proteinGrams: 15,
         carbohydrateGrams: 58,
         fatGrams: 20,
@@ -24,7 +24,7 @@ abstract final class RecipeRepository {
           unit: 'tsp',
         ),
         RecipeIngredient(name: 'Fresh ginger', amount: 2, unit: 'tsp'),
-        RecipeIngredient(name: 'Large eggs', amount: 2, unit: 'pcs'),
+        RecipeIngredient(name: 'Large eggs', amount: 100, unit: 'g'),
       ],
     ),
     Recipe(
