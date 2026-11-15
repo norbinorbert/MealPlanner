@@ -1,6 +1,6 @@
 import 'package:material_ui/material_ui.dart';
 
-import '../../../core/components/hero_icon_button.dart';
+import '../../../core/components/meal_planner_icon_button.dart';
 import '../../../core/theme/colors.dart';
 import '../../../core/theme/dimensions.dart';
 import '../../../core/theme/typography.dart';
@@ -40,12 +40,12 @@ class RecipeDetailsScreen extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      HeroIconButton(
+                      MealPlannerIconButton(
                         icon: Icons.arrow_back,
                         tooltip: 'Back',
                         onPressed: () => Navigator.of(context).maybePop(),
                       ),
-                      HeroIconButton(
+                      MealPlannerIconButton(
                         icon: Icons.more_horiz,
                         tooltip: 'More options',
                         onPressed: () {},

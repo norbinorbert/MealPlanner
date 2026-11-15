@@ -4,8 +4,8 @@ import '../theme/colors.dart';
 import '../theme/typography.dart';
 import '../theme/dimensions.dart';
 
-class HomeNavigation extends StatelessWidget {
-  const HomeNavigation({super.key});
+class BottomNavigation extends StatelessWidget {
+  const BottomNavigation({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +52,7 @@ class NavigationItem extends StatelessWidget {
               ),
               FittedBox(
                 fit: BoxFit.scaleDown,
-                child: Text(label, style: AppTypography.body),
+                child: Text(label, style: AppTypography.bodyLarge),
               ),
             ],
           ),

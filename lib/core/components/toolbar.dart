@@ -3,8 +3,8 @@ import 'package:material_ui/material_ui.dart';
 import '../theme/colors.dart';
 import '../theme/dimensions.dart';
 
-class HomeToolbar extends StatelessWidget {
-  const HomeToolbar({super.key});
+class Toolbar extends StatelessWidget {
+  const Toolbar({super.key});
 
   @override
   Widget build(BuildContext context) {

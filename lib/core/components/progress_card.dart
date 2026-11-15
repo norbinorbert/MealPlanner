@@ -99,7 +99,7 @@ class ProgressCard extends StatelessWidget {
                     ),
                   ),
                   child: const Text(
-                    '🎉 Keep the pace! You’re doing great.',
+                    '🎉 Keep the pace! You\'re doing great.',
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: AppTypography.body,

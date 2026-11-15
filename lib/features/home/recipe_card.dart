@@ -1,22 +1,20 @@
 import 'package:material_ui/material_ui.dart';
 
-import '../../features/recipes/models/recipe.dart';
-import '../../features/recipes/presentation/recipe_details_screen.dart';
-import '../theme/colors.dart';
-import '../theme/dimensions.dart';
-import '../theme/typography.dart';
+import '../recipes/models/recipe.dart';
+import '../recipes/presentation/recipe_details_screen.dart';
+import '../../core/theme/colors.dart';
+import '../../core/theme/dimensions.dart';
+import '../../core/theme/typography.dart';
 
 class RecipeCard extends StatelessWidget {
-  const RecipeCard({
-    super.key,
-    required this.recipe,
-  });
+  const RecipeCard({super.key, required this.recipe});
 
   final Recipe recipe;
 
   @override
   Widget build(BuildContext context) {
     return Material(
+      elevation: AppDimensions.itemSpacingSmall,
       borderRadius: BorderRadius.circular(AppDimensions.cornerRadiusMedium),
       clipBehavior: Clip.antiAlias,
       child: InkWell(
@@ -33,6 +31,20 @@ class RecipeCard extends StatelessWidget {
             fit: StackFit.expand,
             children: [
               Image.asset(recipe.imageAssetPath, fit: BoxFit.cover),
+              DecoratedBox(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [
+                      AppColors.content.withValues(alpha: 0),
+                      AppColors.content.withValues(alpha: 0),
+                      AppColors.content.withValues(alpha: 0.6),
+                    ],
+                    stops: [0, 0.45, 1],
+                  ),
+                ),
+              ),
               Positioned(
                 left: AppDimensions.contentPadding,
                 right: AppDimensions.contentPadding,
@@ -50,7 +62,7 @@ class RecipeCard extends StatelessWidget {
                     Text(
                       '${recipe.mealType} · ${recipe.prepTimeMinutes} mins · '
                       '${recipe.nutrition.energyKcal} kcal',
-                      style: AppTypography.bodySmall.copyWith(
+                      style: AppTypography.body.copyWith(
                         color: AppColors.surface,
                       ),
                     ),

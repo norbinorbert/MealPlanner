@@ -1,9 +1,9 @@
 import 'package:material_ui/material_ui.dart';
 
-import '../../core/components/home_navigation.dart';
-import '../../core/components/home_toolbar.dart';
+import '../../core/components/bottom_navigation.dart';
+import '../../core/components/toolbar.dart';
 import '../../core/components/progress_card.dart';
-import '../../core/components/recipe_card.dart';
+import 'recipe_card.dart';
 import '../../core/theme/dimensions.dart';
 import '../recipes/data/recipe_repository.dart';
 
@@ -16,29 +16,30 @@ class HomeScreen extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
-            const HomeToolbar(),
+            const Toolbar(),
+            const SizedBox(height: AppDimensions.contentPadding),
             const Padding(
               padding: EdgeInsets.symmetric(
-                horizontal: AppDimensions.contentPadding,
+                horizontal: AppDimensions.contentPaddingLarge,
               ),
               child: ProgressCard(),
             ),
             Expanded(
               child: ListView.separated(
                 padding: const EdgeInsets.fromLTRB(
-                  AppDimensions.contentPadding,
                   AppDimensions.contentPaddingLarge,
-                  AppDimensions.contentPadding,
+                  AppDimensions.contentPaddingLarge,
+                  AppDimensions.contentPaddingLarge,
                   AppDimensions.contentPadding,
                 ),
                 itemCount: RecipeRepository.mockRecipes.length,
                 separatorBuilder: (context, index) =>
-                    const SizedBox(height: AppDimensions.itemSpacingLarge),
+                    const SizedBox(height: AppDimensions.contentPadding),
                 itemBuilder: (context, index) =>
                     RecipeCard(recipe: RecipeRepository.mockRecipes[index]),
               ),
             ),
-            const HomeNavigation(),
+            const BottomNavigation(),
           ],
         ),
       ),
