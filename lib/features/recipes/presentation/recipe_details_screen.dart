@@ -134,9 +134,9 @@ class _RecipeDetailsSheet extends StatelessWidget {
               children: [
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
+                  spacing: AppDimensions.itemSpacingExtraSmall,
                   children: [
                     Text(recipe.name, style: AppTypography.display),
-                    const SizedBox(height: AppDimensions.itemSpacingExtraSmall),
                     Text(
                       '${recipe.mealType} / ${recipe.prepTimeMinutes} mins',
                       style: AppTypography.bodySmallEmphasis.copyWith(
@@ -189,13 +189,20 @@ class _RecipeDetailsSheet extends StatelessWidget {
             ),
             child: Row(
               children: [
-                const Text('Ingredients', style: AppTypography.sectionTitle),
-                const SizedBox(width: AppDimensions.itemSpacingSmall),
-                Text(
-                  '${recipe.servings} serves',
-                  style: AppTypography.bodySmall.copyWith(
-                    color: AppColors.contentSecondary,
-                  ),
+                Row(
+                  spacing: AppDimensions.itemSpacingSmall,
+                  children: [
+                    const Text(
+                      'Ingredients',
+                      style: AppTypography.sectionTitle,
+                    ),
+                    Text(
+                      '${recipe.servings} serves',
+                      style: AppTypography.bodySmall.copyWith(
+                        color: AppColors.contentSecondary,
+                      ),
+                    ),
+                  ],
                 ),
                 const Spacer(),
                 _ServingButton(
@@ -280,9 +287,9 @@ class _NutritionItem extends StatelessWidget {
     return Expanded(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
+        spacing: AppDimensions.itemSpacingExtraSmall,
         children: [
           Text(value, style: AppTypography.bodySmall),
-          const SizedBox(height: AppDimensions.itemSpacingExtraSmall),
           Text(label, style: AppTypography.bodyEmphasis),
         ],
       ),

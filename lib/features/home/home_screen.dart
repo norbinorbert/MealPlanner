@@ -103,6 +103,7 @@ class _ProgressCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(AppDimensions.cornerRadiusMedium),
       ),
       child: Column(
+        spacing: AppDimensions.itemSpacing,
         children: [
           Row(
             children: [
@@ -127,14 +128,13 @@ class _ProgressCard extends StatelessWidget {
               ),
             ],
           ),
-          const SizedBox(height: AppDimensions.itemSpacing),
           const Row(
+            spacing: AppDimensions.itemSpacingExtraSmall,
             children: [
               SizedBox(
                 width: AppDimensions.calorieColumnWidth,
                 child: _CaloriesAmount(),
               ),
-              SizedBox(width: AppDimensions.itemSpacingExtraSmall),
               Expanded(
                 child: _MacroProgress(
                   percent: 29,
@@ -142,7 +142,6 @@ class _ProgressCard extends StatelessWidget {
                   color: AppColors.chartYellow,
                 ),
               ),
-              SizedBox(width: AppDimensions.itemSpacingExtraSmall),
               Expanded(
                 child: _MacroProgress(
                   percent: 65,
@@ -150,7 +149,6 @@ class _ProgressCard extends StatelessWidget {
                   color: AppColors.chartBlue,
                 ),
               ),
-              SizedBox(width: AppDimensions.itemSpacingExtraSmall),
               Expanded(
                 child: _MacroProgress(
                   percent: 85,
@@ -160,8 +158,8 @@ class _ProgressCard extends StatelessWidget {
               ),
             ],
           ),
-          const SizedBox(height: AppDimensions.itemSpacing),
           Row(
+            spacing: AppDimensions.itemSpacingMedium,
             children: [
               const CircleAvatar(
                 radius: AppDimensions.avatarRadiusSmall,
@@ -172,7 +170,6 @@ class _ProgressCard extends StatelessWidget {
                   color: AppColors.contentSecondary,
                 ),
               ),
-              const SizedBox(width: AppDimensions.itemSpacingMedium),
               Expanded(
                 child: Container(
                   padding: const EdgeInsets.symmetric(
@@ -208,19 +205,19 @@ class _CaloriesAmount extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
+      spacing: AppDimensions.itemSpacingExtraSmall,
       children: [
         Text(
           'Calories',
           style: AppTypography.body.copyWith(color: AppColors.contentSecondary),
         ),
-        SizedBox(height: AppDimensions.itemSpacingExtraSmall),
         Row(
+          spacing: AppDimensions.itemSpacingExtraSmall,
           children: [
             Icon(
               Icons.local_fire_department,
               size: AppDimensions.iconSizeCalorie,
             ),
-            SizedBox(width: AppDimensions.itemSpacingExtraSmall),
             Flexible(
               child: FittedBox(
                 fit: BoxFit.scaleDown,
@@ -313,6 +310,7 @@ class _RecipeCard extends StatelessWidget {
                 bottom: AppDimensions.itemSpacing,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
+                  spacing: AppDimensions.itemSpacingExtraSmall,
                   children: [
                     Text(
                       recipe.name,
@@ -320,7 +318,6 @@ class _RecipeCard extends StatelessWidget {
                         color: AppColors.surface,
                       ),
                     ),
-                    const SizedBox(height: AppDimensions.itemSpacingExtraSmall),
                     Text(
                       '${recipe.mealType} · ${recipe.prepTimeMinutes} mins · '
                       '${recipe.nutrition.energyKcal} kcal',
@@ -383,13 +380,13 @@ class _NavigationItem extends StatelessWidget {
           ),
           child: Column(
             mainAxisSize: MainAxisSize.min,
+            spacing: AppDimensions.itemSpacingSmall,
             children: [
               Icon(
                 icon,
                 size: AppDimensions.iconSizeNavigation,
                 color: AppColors.content,
               ),
-              const SizedBox(height: AppDimensions.itemSpacingSmall),
               FittedBox(
                 fit: BoxFit.scaleDown,
                 child: Text(label, style: AppTypography.navigation),
