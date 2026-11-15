@@ -26,7 +26,7 @@ abstract final class AppDimensions {
   static const double recipeCardIconSize = 104;
   static const double recipeArtworkIconSize = 220;
   static const double recipeDetailsHeaderHeight = 86;
-  static const double nutritionRowHeight = 70;
+  static const double nutritionRowHeight = 60;
   static const double cookingButtonHeight = 52;
   static const double servingButtonWidth = 36;
   static const double servingButtonHeight = 28;

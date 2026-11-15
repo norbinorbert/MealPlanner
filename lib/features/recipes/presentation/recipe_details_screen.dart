@@ -105,25 +105,13 @@ class _RecipeDetailsSheet extends StatelessWidget {
         children: [
           SizedBox(
             height: AppDimensions.recipeDetailsHeaderHeight,
-            child: Stack(
-              alignment: Alignment.center,
-              children: [
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  spacing: AppDimensions.itemSpacingSmall,
-                  children: [
-                    Text(recipe.name, style: AppTypography.title),
-                    Text(
-                      '${recipe.mealType} / ${recipe.prepTimeMinutes} mins',
-                      style: AppTypography.bodySmallEmphasis.copyWith(
-                        color: AppColors.contentSecondary,
-                      ),
-                    ),
-                  ],
-                ),
-                Positioned(
-                  left: AppDimensions.itemSpacingMedium,
-                  child: IconButton(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: AppDimensions.itemSpacingMedium,
+              ),
+              child: Row(
+                children: [
+                  IconButton(
                     onPressed: () {},
                     tooltip: 'Reset recipe',
                     icon: const Icon(
@@ -131,8 +119,33 @@ class _RecipeDetailsSheet extends StatelessWidget {
                       size: AppDimensions.iconSizeLarge,
                     ),
                   ),
-                ),
-              ],
+                  Expanded(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      spacing: AppDimensions.itemSpacingSmall,
+                      children: [
+                        Text(
+                          recipe.name,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: AppTypography.title,
+                        ),
+                        Text(
+                          '${recipe.mealType} / ${recipe.prepTimeMinutes} mins',
+                          style: AppTypography.bodySmallEmphasis.copyWith(
+                            color: AppColors.contentSecondary,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(
+                    width:
+                        AppDimensions.iconSizeExtraLarge +
+                        AppDimensions.itemSpacingLarge,
+                  ),
+                ],
+              ),
             ),
           ),
           Container(
@@ -239,10 +252,7 @@ class _RecipeDetailsSheet extends StatelessWidget {
                     ),
                   ),
                 ),
-                child: const Text(
-                  'Start cooking',
-                  style: AppTypography.emphasis,
-                ),
+                child: const Text('Start cooking', style: AppTypography.title),
               ),
             ),
           ),
