@@ -8,6 +8,10 @@ class Recipe {
     required this.nutrition,
     required this.ingredients,
     required this.imageAssetPath,
+    this.imageUrl,
+    this.instructions = '',
+    this.sourceUrl,
+    this.youtubeUrl,
   });
 
   final String id;
@@ -18,6 +22,10 @@ class Recipe {
   final RecipeNutrition nutrition;
   final List<RecipeIngredient> ingredients;
   final String imageAssetPath;
+  final String? imageUrl;
+  final String instructions;
+  final String? sourceUrl;
+  final String? youtubeUrl;
 }
 
 class RecipeNutrition {
@@ -46,6 +54,14 @@ class RecipeIngredient {
   final String unit;
 
   String get amountLabel {
+    if (amount == 0 && unit.isEmpty) {
+      return '';
+    }
+    if (unit.isEmpty) {
+      return amount == amount.roundToDouble()
+          ? amount.toInt().toString()
+          : amount.toString();
+    }
     final amountText = amount == amount.roundToDouble()
         ? amount.toInt().toString()
         : amount.toString();

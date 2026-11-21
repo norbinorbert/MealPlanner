@@ -1,18 +1,22 @@
 import 'package:material_ui/material_ui.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../core/components/meal_planner_icon_button.dart';
 import '../../../core/theme/colors.dart';
 import '../../../core/theme/dimensions.dart';
 import '../../../core/theme/typography.dart';
 import '../models/recipe.dart';
+import 'recipe_providers.dart';
 
-class RecipeDetailsScreen extends StatelessWidget {
+class RecipeDetailsScreen extends ConsumerWidget {
   const RecipeDetailsScreen({super.key, required this.recipe});
 
   final Recipe recipe;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final isFavorite =
+        ref.watch(favoriteProvider).value?.contains(recipe.id) ?? false;
     return Scaffold(
       backgroundColor: AppColors.surface,
       body: SafeArea(
@@ -46,9 +50,15 @@ class RecipeDetailsScreen extends StatelessWidget {
                         onPressed: () => Navigator.of(context).maybePop(),
                       ),
                       MealPlannerIconButton(
-                        icon: Icons.more_horiz,
-                        tooltip: 'More options',
-                        onPressed: () {},
+                        icon: isFavorite
+                            ? Icons.favorite
+                            : Icons.favorite_border,
+                        tooltip: isFavorite
+                            ? 'Remove from favorites'
+                            : 'Add to favorites',
+                        onPressed: () => ref
+                            .read(favoriteProvider.notifier)
+                            .toggle(recipe.id),
                       ),
                     ],
                   ),
@@ -80,7 +90,16 @@ class _RecipeArtwork extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       fit: StackFit.expand,
-      children: [Image.asset(recipe.imageAssetPath, fit: BoxFit.cover)],
+      children: [
+        recipe.imageUrl == null
+            ? Image.asset(recipe.imageAssetPath, fit: BoxFit.cover)
+            : Image.network(
+                recipe.imageUrl!,
+                fit: BoxFit.cover,
+                errorBuilder: (_, _, _) =>
+                    Image.asset(recipe.imageAssetPath, fit: BoxFit.cover),
+              ),
+      ],
     );
   }
 }
