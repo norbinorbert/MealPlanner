@@ -63,7 +63,7 @@ class RecipeRepository {
         fatGrams: 0,
       ),
       ingredients: ingredients,
-      imageAssetPath: 'assets/images/recipe1.jpg',
+      imageAssetPath: 'assets/images/placeholder.jpg',
       imageUrl: dto.imageUrl,
       instructions: dto.instructions ?? '',
       sourceUrl: dto.sourceUrl,
