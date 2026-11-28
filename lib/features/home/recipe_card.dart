@@ -1,18 +1,22 @@
 import 'package:material_ui/material_ui.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../recipes/models/recipe.dart';
 import '../recipes/presentation/recipe_details_screen.dart';
 import '../../core/theme/colors.dart';
 import '../../core/theme/dimensions.dart';
 import '../../core/theme/typography.dart';
+import '../recipes/presentation/recipe_providers.dart';
 
-class RecipeCard extends StatelessWidget {
+class RecipeCard extends ConsumerWidget {
   const RecipeCard({super.key, required this.recipe});
 
   final Recipe recipe;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final isFavorite =
+        ref.watch(favoriteProvider).value?.contains(recipe.id) ?? false;
     return Material(
       elevation: AppDimensions.itemSpacingSmall,
       borderRadius: BorderRadius.circular(AppDimensions.cornerRadiusMedium),
@@ -30,7 +34,14 @@ class RecipeCard extends StatelessWidget {
           child: Stack(
             fit: StackFit.expand,
             children: [
-              Image.asset(recipe.imageAssetPath, fit: BoxFit.cover),
+              recipe.imageUrl == null
+                  ? Image.asset(recipe.imageAssetPath, fit: BoxFit.cover)
+                  : Image.network(
+                      recipe.imageUrl!,
+                      fit: BoxFit.cover,
+                      errorBuilder: (_, _, _) =>
+                          Image.asset(recipe.imageAssetPath, fit: BoxFit.cover),
+                    ),
               DecoratedBox(
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
@@ -42,6 +53,26 @@ class RecipeCard extends StatelessWidget {
                       AppColors.content.withValues(alpha: 0.6),
                     ],
                     stops: [0, 0.45, 1],
+                  ),
+                ),
+              ),
+              Positioned(
+                top: AppDimensions.itemSpacingMedium,
+                right: AppDimensions.itemSpacingMedium,
+                child: Material(
+                  color: AppColors.surface.withValues(alpha: 0.9),
+                  shape: const CircleBorder(),
+                  clipBehavior: Clip.antiAlias,
+                  child: IconButton(
+                    tooltip: isFavorite
+                        ? 'Remove from favorites'
+                        : 'Add to favorites',
+                    onPressed: () =>
+                        ref.read(favoriteProvider.notifier).toggle(recipe.id),
+                    icon: Icon(
+                      isFavorite ? Icons.favorite : Icons.favorite_border,
+                      color: isFavorite ? AppColors.accent : AppColors.content,
+                    ),
                   ),
                 ),
               ),
